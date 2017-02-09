@@ -60,6 +60,8 @@ If you don't remember registering the MD5 checksum for each file when you submit
 2. You registered the MD5 checksum using the tsv columns during submission time. (module 4, :ref:`part 2 <mod_04_part_02>`, step 5). This method is the most common source of wrongly registered checksums. Most other times it is sufficient to re upload the file and assume the registered checksum is correct.
 3. You uploaded 'XXX.md5' checksum files along with the XXX read files.
 
+If you are submitting a new run(s) you can use the procedure described above to register an md5 checksum for each file that you upload. If you use option 2 from above (register the checksum in the metadata tsv table) it will over-ride the checksum file present in your ftp directory. If you provide a checksum file for every read file you can leave the checksum column(s) blank at the metadata registration :ref:`stage <mod_04_part_02>`.
+
 
 Error Type 2: Number of lines is not multiple of 4
 --------------------------------------------------
