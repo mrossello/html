@@ -1,0 +1,149 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Module 4: Add Read files &#8212; training_modules 1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Tips and FAQs" href="tips.html" />
+    <link rel="prev" title="Module 3: Register Source Samples" href="mod_03.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-4-add-read-files">
+<h1>Module 4: Add Read files<a class="headerlink" href="#module-4-add-read-files" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="part-1">
+<h2>Part 1<a class="headerlink" href="#part-1" title="Permalink to this headline">¶</a></h2>
+<img alt="_images/mod_04_p01.png" src="_images/mod_04_p01.png" />
+<p>This is the first page that you will come to when submitting runs and experiments (see module <a class="reference external" href="mod_01.html">1</a>). A run object is used to register a demultiplexed NGS read file (or pair of files) that you have uploaded (for example, Fastq, BAM, SFF, CRAM) to your ENA ftp directory. Without run objects the files can not be registered and archived. An experiment object represents a library solution used on the NGS machine. The experiment object will also link the run to the sample, and to the study.</p>
+<ol class="arabic simple">
+<li>Select the study that you will be adding the runs and experiments to. If the study that you want to submit to does not exist yet you can create one now (red asterisk). However it is best to split your submission up and create the study as part of an earlier session (see module <a class="reference external" href="mod_01.html">1</a>)</li>
+<li>Click next to move to the next stage. The next stage is the sample generation stage. In most cases the samples will have already been generated (it is best to submit the samples in a separate submission so that the work is more divided). Find the ‘skip’ option to skip this step. If the samples do not exist, do not use the skip option, you can create some samples during this step (see module <a class="reference external" href="mod_01.html">1</a> and module <a class="reference external" href="mod_03.html">3</a>)</li>
+</ol>
+</div>
+<div class="section" id="part-2">
+<span id="mod-04-part-02"></span><h2>Part 2<a class="headerlink" href="#part-2" title="Permalink to this headline">¶</a></h2>
+<img alt="_images/mod_04_p02.png" src="_images/mod_04_p02.png" />
+<p>This is the step for registering the files that you have uploaded to your personal ENA ftp directory. We need to wrap each file or pair of files into a run object, point that run to an experiment object, and point that experiment object to the correct sample.</p>
+<a class="reference internal image-reference" href="_images/mod_01_p02.png"><img alt="_images/mod_01_p02.png" class="align-center" src="_images/mod_01_p02.png" style="width: 207.45px; height: 165.15px;" /></a>
+<ol class="arabic simple">
+<li>Choose the type of file that you are submitting. Note that in the case of paired runs there is a 2 x fastq file option.</li>
+<li>Any information you type into the webform will be lost if you log out before submitting. So you are highly recommended to download a tab separated spreadsheet file (step 6) and fill it in offline. First, note that some fields have drop down lists. Check the options in these so that you can apply them correctly into the spreadsheet when offline.</li>
+<li>Every row in the table represents one run and one experiment object and they need a source sample. The drop down for the sample column does not work in most cases so you should know how you have named them, or you can check by way of the sample tab (*). It is possible to give multiple runs the same source by repeating the sample id in multiple rows (for instance, in the case of a deep coverage experiment where multiple lanes have been used)</li>
+<li>The file names correspond to the files that you have uploaded to your Webin ftp directory. Each run object gets matched with files which are separately uploaded. <a class="reference external" href="http://www.ebi.ac.uk/ena/about/sra_data_upload">Here</a> is a list of ways you can upload your files. File names should be written exactly as they appear in the ftp directory. For instance, FastQ files must be compressed and so will carry the extension “.gz” or similar. The extension should be included when referencing the files in this column.</li>
+<li>The checksum is a fingerprint for the file. If the file is not 100% transferred we will only have a corrupted or truncated version which is of no use so we need to check that this has not happened. If the file checksum is different after the transfer we know there has been a problem, so you need to supply the checksum for the file before it is uploaded so that we can do this check. We will calculate the checksum of the uploaded file and then compare it with the one that you have provided. You can paste the checksum directly into this column. It will be a 32 character string. You can also put the 32 character string into its own file and upload this checksum file with the original file. The checksum file has to be named in a way that it can be recognised. It needs to have the same name as the original file PLUS the extension “.md5” (so for file XXX the md5 checksum should be in file XXX.md5). If you have uploaded a checksum file for each read file then you can leave this column blank. Do not write the checksum file name (file XXX.md5) into the field – Webin will report an error, that it is expecting a 32 character string. The Webin uploader tool automatically deposits an checksum file to your ftp directory for every file that upload so if you have used this tool leave the column blank. The Webin uploader tool uses Java applet technology which is generally being reduced or discontinued in browsers due to security risks so the uploader tool may not be an option depending on your environment. So how do you create your own checksum file? On a Linux machine it is easy, simply type (without the quotes, at the command line) “md5sum &lt;file name&gt;” and it will display a line formatted like this: &lt;32 character md5sum&gt;&lt;2 spaces&gt;&lt;file name&gt;. This is exactly the format our system will recognise if you create a checksum file so simply redirect (using ‘&gt;’ symbol) the output to a checksum file: “md5sum file_name &gt; file_name.md5”. Then upload this file along with the original one before you reach step 8. Apple Mac operating systems also have a similar checksum generator that you can use. It is also possible on a Windows operating system but you may have to download 3rd party software to do it. More info <a class="reference internal" href="error_notif.html#newmd5"><span class="std std-ref">here</span></a></li>
+<li>Any information that you type into the webform will be lost if you log out before submitting. Therefore you should download a template tab delimited spreadsheet file which you can open in a spreadsheet program like MS Excel. Once you have filled it in offline, log back in, return to this submission page and upload it (step 7). The other advantage of having an offline copy of your experiments and runs is that if there is a problem submitting the data you can send the spreadsheet file to ENA helpdesk and they can troubleshoot it for you.</li>
+<li>Upload the completed spreadsheet file that you created in step 6. The web form should fill up with the data in your spreadsheet. You can do a preliminary check to see if some fields are not recognised (check the controlled drop down lists and that file names appear as expected).</li>
+<li>This is the final step. If errors are reported you can remove the loaded table (use the cross that has appeared in step 7), then make your edits tot eh tsv spreadsheet and try again (from step 7). If you need to send the tsv spreadsheet to ENA help desk for troubleshooting (as mentioned in step 6), ensure that the project and samples are already submitted (module <a class="reference external" href="mod_02.html">2</a> and <a class="reference external" href="mod_03.html">3</a>) so that the ENA officer can focus only on the step that is failing.</li>
+</ol>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h3><a href="index.html">Table Of Contents</a></h3>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="guides.html">Guides and Walkthroughs</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="mod_01.html">Module 1: Submission Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mod_02.html">Module 2: Create a Project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mod_03.html">Module 3: Register Source Samples</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Module 4: Add Read files</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tips.html">Tips and FAQs</a></li>
+</ul>
+
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Module 4: Add Read files</a><ul>
+<li><a class="reference internal" href="#part-1">Part 1</a></li>
+<li><a class="reference internal" href="#part-2">Part 2</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  <li><a href="guides.html">Guides and Walkthroughs</a><ul>
+      <li>Previous: <a href="mod_03.html" title="previous chapter">Module 3: Register Source Samples</a></li>
+      <li>Next: <a href="tips.html" title="next chapter">Tips and FAQs</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/mod_04.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017, Marc B Rossello.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.5.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
+      
+      |
+      <a href="_sources/mod_04.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
