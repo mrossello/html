@@ -2,7 +2,7 @@ Solving Error Notifications (runs)
 ==================================
 
 
-Submission of read files such as BAM and FastQ involves uploading them to your confidential ftp directory (this comes with your Webin account). Following this you will 'submit' the files: wrap each file (or pair of files) into a run object. This action of registering the run objects triggers our file processing pipeline to do some preliminary checks on the read files. If any check fails you will receive an error notification by email. 
+Submission of read files such as BAM and FastQ involves uploading them to your confidential ftp directory (this comes with your Webin account). Following this you will 'submit' the files: wrap each file (or pair of files) into a run object. This action of registering the run objects triggers our file processing pipeline to do some preliminary checks on the read files before moving them to an archive area. If any check fails you will receive an error notification by email. 
 
 To correct these preliminary validation errors you do not need to repeat any of the submission process. Simply upload and replace the files with fixed versions and if necessary update the registered md5 checksum (more on this later). The runs will automatically be updated because the processing pipeline cycles through all files that are flagged/unvalidated to see if there has been a changed. The duration of this cycle is dependent on the queue. At quiet times it can be less than 24 but it can take several days during busier times so please allow some time after you have implemented your fix for the automatic email notifications to cease.
 
